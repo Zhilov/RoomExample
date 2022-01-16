@@ -21,9 +21,11 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.ref.WeakReference
 
 class MainFragment : Fragment() {
 
+    lateinit var mainActivity: MainActivity
     lateinit var db: AppDatabase
     lateinit var employeeDao: EmployeeDao
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -36,6 +38,7 @@ class MainFragment : Fragment() {
         super.onCreate(savedInstanceState)
         db = App.getInstance().database
         employeeDao = db.employeeDao()
+        mainActivity = (activity as MainActivity)
 
     }
 
@@ -54,15 +57,20 @@ class MainFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.newThread())
             .subscribe ({
-                adapter = RecyclerViewAdapter(it)
-                recyclerView.layoutManager = linearLayoutManager
-                recyclerView.adapter = adapter
+                if (it.isEmpty()){
+                    textEmpty.visibility = View.VISIBLE
+                } else {
+                    adapter = RecyclerViewAdapter(context!!, it)
+                    recyclerView.layoutManager = linearLayoutManager
+                    recyclerView.adapter = adapter
+                }
+
             }, {
                Log.d("Tag", it.localizedMessage.toString())
             }, {})
 
         fab.setOnClickListener{
-            switchContent(R.id.fragment_container_view, CreateEmpFragment())
+            mainActivity.switchContent(R.id.fragment_container_view, CreateEmpFragment())
         }
 
         return view
@@ -73,15 +81,6 @@ class MainFragment : Fragment() {
                 sub ->
             sub.onNext(employeeDao.all as ArrayList<Employee>?)
             sub.onComplete()
-        }
-    }
-
-    private fun switchContent(id: Int, fragment: Fragment) {
-        if (context == null) return
-        if (context is MainActivity) {
-            val mainActivity = requireActivity() as MainActivity
-            val frag: Fragment = fragment
-            mainActivity.switchContent(id, frag)
         }
     }
 }

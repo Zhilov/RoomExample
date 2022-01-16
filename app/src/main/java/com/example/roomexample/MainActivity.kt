@@ -20,6 +20,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
+    fun switchContent(id: Int, fragment: Fragment, bundle: Bundle) {
+        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+        fragment.arguments = bundle
+        ft.replace(id, fragment, fragment.toString())
+        ft.addToBackStack(null)
+        ft.commit()
+    }
+
     fun switchContent(id: Int, fragment: Fragment) {
         val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
         ft.replace(id, fragment, fragment.toString())
