@@ -48,7 +48,7 @@ class RecyclerViewAdapter(val context: Context, private val employeeList: ArrayL
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.textId.text = position.toString()
+        holder.textId.text = "" + (position + 1)
         holder.textName.text = employeeList[position].name.toString()
         holder.textSalary.text = employeeList[position].salary.toString()
 
