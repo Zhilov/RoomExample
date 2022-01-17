@@ -1,10 +1,8 @@
 package com.example.roomexample.room;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
 import java.util.List;
 
@@ -25,10 +23,4 @@ public interface EmployeeDao {
 
     @Insert
     void insert(Employee employee);
-
-    @Update
-    void update(Employee employee);
-
-    @Delete
-    void delete(Employee employee);
 }

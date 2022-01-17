@@ -1,19 +1,16 @@
 package com.example.roomexample.fragment
 
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.roomexample.R
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.roomexample.Anim
+import androidx.fragment.app.Fragment
 import com.example.roomexample.App
-import com.example.roomexample.MainActivity
+import com.example.roomexample.R
 import com.example.roomexample.room.AppDatabase
 import com.example.roomexample.room.Employee
 import com.example.roomexample.room.EmployeeDao
@@ -24,15 +21,15 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ChangeEmpFragment : Fragment() {
 
-    lateinit var editName: EditText
-    lateinit var editSalary: EditText
-    lateinit var buttonSubmitChanges: Button
-    lateinit var imageDelete: ImageView
-    lateinit var imageBack: ImageView
-    lateinit var db: AppDatabase
-    lateinit var employeeDao: EmployeeDao
-    lateinit var textCurrent: TextView
-    lateinit var employee: Employee
+    private lateinit var editName: EditText
+    private lateinit var editSalary: EditText
+    private lateinit var buttonSubmitChanges: Button
+    private lateinit var imageDelete: ImageView
+    private lateinit var imageBack: ImageView
+    private lateinit var db: AppDatabase
+    private lateinit var employeeDao: EmployeeDao
+    private lateinit var textCurrent: TextView
+    private lateinit var employee: Employee
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +54,6 @@ class ChangeEmpFragment : Fragment() {
         textCurrent = view.findViewById(R.id.text_current)
 
         imageBack.setOnClickListener{
-            Anim().setOnTouchAnimListener(it)
             parentFragmentManager.popBackStackImmediate()
 
         }

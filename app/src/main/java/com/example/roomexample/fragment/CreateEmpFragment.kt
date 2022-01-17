@@ -20,12 +20,12 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class CreateEmpFragment : Fragment() {
 
-    lateinit var editName: EditText
-    lateinit var editSalary: EditText
-    lateinit var buttonOk: Button
-    lateinit var imageBack: ImageView
-    lateinit var db: AppDatabase
-    lateinit var employeeDao: EmployeeDao
+    private lateinit var editName: EditText
+    private lateinit var editSalary: EditText
+    private lateinit var buttonOk: Button
+    private lateinit var imageBack: ImageView
+    private lateinit var db: AppDatabase
+    private lateinit var employeeDao: EmployeeDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +50,7 @@ class CreateEmpFragment : Fragment() {
 
         buttonOk.setOnClickListener{
             if (editName.text.isNotEmpty() && editSalary.text.isNotEmpty()){
-                    var employee = Employee()
+                    val employee = Employee()
                 employee.name = editName.text.toString()
                 employee.salary = editSalary.text.toString().toDouble()
                 insertEmployee(employee).observeOn(AndroidSchedulers.mainThread())

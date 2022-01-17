@@ -2,7 +2,6 @@ package com.example.roomexample.adapter
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,21 +12,16 @@ import com.example.roomexample.App
 import com.example.roomexample.MainActivity
 import com.example.roomexample.R
 import com.example.roomexample.fragment.ChangeEmpFragment
-import com.example.roomexample.fragment.MainFragment
 import com.example.roomexample.room.AppDatabase
 import com.example.roomexample.room.Employee
 import com.example.roomexample.room.EmployeeDao
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_main.*
 
 
-class RecyclerViewAdapter(val context: Context, private val employeeList: ArrayList<Employee>) :
+class RecyclerViewAdapter(private val context: Context, private val employeeList: ArrayList<Employee>) :
     RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
-    lateinit var db: AppDatabase
-    lateinit var employeeDao: EmployeeDao
+    private lateinit var db: AppDatabase
+    private lateinit var employeeDao: EmployeeDao
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textId: TextView = itemView.findViewById(R.id.text_id)
@@ -66,7 +60,6 @@ class RecyclerViewAdapter(val context: Context, private val employeeList: ArrayL
     }
 
     private fun switchContent(id: Int, fragment: Fragment, bundle: Bundle) {
-        if (context == null) return
         if (context is MainActivity) {
             val mainActivity = context
             val frag: Fragment = fragment

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Room</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name">Name</string>
     <string name="salary">Salary</string>
@@ -8,4 +7,5 @@
     <string name="nothing_to_show">Nothing to show</string>
     <string name="change_employee_data_in_database">Change employee data in Database</string>
     <string name="commit_changes">Commit Changes</string>
+    <string name="insert_employee_in_database">Insert employee in Database</string>
 </resources>

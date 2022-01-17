@@ -31,11 +31,11 @@ public class Employee implements Parcelable {
         dest.writeDouble(this.salary);
     }
 
-    public void readFromParcel(Parcel source) {
-        this.id = source.readLong();
-        this.name = source.readString();
-        this.salary = source.readDouble();
-    }
+//    public void readFromParcel(Parcel source) {
+//        this.id = source.readLong();
+//        this.name = source.readString();
+//        this.salary = source.readDouble();
+//    }
 
     public Employee() {
     }

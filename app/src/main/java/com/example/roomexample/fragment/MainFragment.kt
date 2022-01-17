@@ -9,10 +9,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.roomexample.R
-import com.example.roomexample.adapter.RecyclerViewAdapter
 import com.example.roomexample.App
 import com.example.roomexample.MainActivity
+import com.example.roomexample.R
+import com.example.roomexample.adapter.RecyclerViewAdapter
 import com.example.roomexample.room.AppDatabase
 import com.example.roomexample.room.Employee
 import com.example.roomexample.room.EmployeeDao
@@ -20,8 +20,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.ref.WeakReference
 
 class MainFragment : Fragment() {
 
@@ -66,7 +64,7 @@ class MainFragment : Fragment() {
                 }
 
             }, {
-               Log.d("Tag", it.localizedMessage.toString())
+               Log.d("Tag", it?.localizedMessage.toString())
             }, {})
 
         fab.setOnClickListener{
