@@ -1,6 +1,7 @@
 package com.example.roomexample.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.roomexample.Anim
 import com.example.roomexample.App
 import com.example.roomexample.MainActivity
 import com.example.roomexample.room.AppDatabase
@@ -55,7 +57,9 @@ class ChangeEmpFragment : Fragment() {
         textCurrent = view.findViewById(R.id.text_current)
 
         imageBack.setOnClickListener{
+            Anim().setOnTouchAnimListener(it)
             parentFragmentManager.popBackStackImmediate()
+
         }
 
         imageDelete.setOnClickListener{

@@ -18,9 +18,11 @@
         android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="15dp"
         android:layout_marginBottom="15dp"
+        android:layout_toLeftOf="@id/text_salary"
         android:fontFamily="sans-serif-thin"
         android:textColor="@color/black"
         android:textSize="30sp"
@@ -35,7 +37,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:fontFamily="sans-serif-thin"
-        android:textColor="@color/black"
+        android:textColor="@color/design_default_color_primary"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -43,6 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/black" />
+        android:background="@color/design_default_color_primary_dark" />
 
 </RelativeLayout>
