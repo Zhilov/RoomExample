@@ -68,13 +68,10 @@ class ChangeEmpFragment : Fragment() {
 
             editName.setText(employee.name)
             editSalary.setText(employee.salary.toString())
-            textCurrent.setText("Name: ${employee.name} with salary: ${employee.salary}")
+            textCurrent.setText("Name: ${employee.name} with salary ${employee.salary}")
 
         buttonSubmitChanges.setOnClickListener{
             if (editName.text.isNotEmpty() && editSalary.text.isNotEmpty()){
-                var employee = Employee()
-                employee.name = editName.text.toString()
-                employee.salary = editSalary.text.toString().toDouble()
                 changeEmployee(employee).observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.newThread())
                     .subscribe({
@@ -91,7 +88,7 @@ class ChangeEmpFragment : Fragment() {
     private fun changeEmployee(employee: Employee): Observable<Employee> {
         return Observable.create{
                 sub ->
-
+            employeeDao.updateData(employee.id, editName.text.toString(), editSalary.text.toString().toDouble())
             sub.onComplete()
         }
     }

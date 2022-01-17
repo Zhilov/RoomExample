@@ -18,7 +18,10 @@ public interface EmployeeDao {
     Employee getById(long id);
 
     @Query("DELETE FROM employee WHERE id = :id")
-    abstract void deleteById(long id);
+    void deleteById(long id);
+
+    @Query("UPDATE employee SET name = :name, salary= :salary WHERE id =:id;")
+    void updateData(long id, String name, Double salary);
 
     @Insert
     void insert(Employee employee);
